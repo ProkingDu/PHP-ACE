@@ -7,4 +7,7 @@ return [
     // \think\middleware\LoadLangPack::class,
     // Session初始化
     // \think\middleware\SessionInit::class
+
+    // 请求验证中间件
+    \app\middleware\Verify::class
 ];
