@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2024-02-29 17:05:52
+-- 生成日期： 2024-02-29 19:15:19
 -- 服务器版本： 5.7.40-log
 -- PHP 版本： 7.4.33
 
@@ -35,9 +35,18 @@ CREATE TABLE `auth_list` (
   `version` varchar(1000) DEFAULT '1.0.0' COMMENT '当前版本',
   `patch` varchar(1000) DEFAULT NULL COMMENT '补丁包目录，为空则公共',
   `sql_patch` varchar(1000) DEFAULT NULL COMMENT '数据库补丁目的，为空则为公共',
+  `token` varchar(255) DEFAULT NULL COMMENT '请求token',
+  `token_expire_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'token过期时间',
   `end_time` datetime DEFAULT NULL COMMENT '到期时间',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `auth_list`
+--
+
+INSERT INTO `auth_list` (`id`, `name`, `domain`, `auth_ip`, `version`, `patch`, `sql_patch`, `token`, `token_expire_time`, `end_time`, `create_time`) VALUES
+(1, 'test', 'test.cn', NULL, '1.0.0', NULL, NULL, NULL, '2024-02-29 17:57:26', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -88,7 +97,7 @@ ALTER TABLE `system_setting`
 -- 使用表AUTO_INCREMENT `auth_list`
 --
 ALTER TABLE `auth_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用表AUTO_INCREMENT `system_setting`
